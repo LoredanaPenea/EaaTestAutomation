@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35716.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EaaFramework", "EaaFramework\EaaFramework.csproj", "{36F9114C-7E8F-4B2A-B4B5-B6B435287514}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EaaApplicationTest", "EaaApplicationTest\EaaApplicationTest.csproj", "{9E55741E-8816-4614-AAE0-ED98BE2214CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{36F9114C-7E8F-4B2A-B4B5-B6B435287514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36F9114C-7E8F-4B2A-B4B5-B6B435287514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36F9114C-7E8F-4B2A-B4B5-B6B435287514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36F9114C-7E8F-4B2A-B4B5-B6B435287514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E55741E-8816-4614-AAE0-ED98BE2214CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E55741E-8816-4614-AAE0-ED98BE2214CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E55741E-8816-4614-AAE0-ED98BE2214CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E55741E-8816-4614-AAE0-ED98BE2214CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F32B008-8DFB-45B7-BA64-6A5CBD38637D}
+	EndGlobalSection
+EndGlobal
