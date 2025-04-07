@@ -5,13 +5,14 @@ using System;
 
 namespace EaaFramework.Driver
 {
-    public class PlaywrightDriver
+    public class PlaywrightDriver :IDisposable
     {
         private readonly AsyncTask<IBrowser> _browser;
         private readonly AsyncTask<IBrowserContext> _browserContext;
         private readonly TestSettings _testSettings;
         private readonly IPlaywrightDriverInitializer _playwrightDriverInitializer;
         private readonly AsyncTask<IPage> _page;
+        private bool _isDisposed;
 
         public PlaywrightDriver (TestSettings testSettings, IPlaywrightDriverInitializer playwrightDriverInitializer)
         {
@@ -50,5 +51,22 @@ namespace EaaFramework.Driver
             return await (await _browserContext).NewPageAsync();
         }
 
+        public void Dispose()
+        {
+            if (!_isDisposed)
+            {
+                if (_browser.IsValueCreated)
+                    // TODO: dispose managed state (managed objects)
+                    Task.Run(async () => 
+                    { 
+                        await (await Browser).CloseAsync();
+                        await (await Browser).DisposeAsync();
+                    });
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                _isDisposed = true;
+            }
+        }
     }
 }
