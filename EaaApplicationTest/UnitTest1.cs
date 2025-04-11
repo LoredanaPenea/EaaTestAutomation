@@ -1,3 +1,4 @@
+using EaaApplicationTest.Pages;
 using EaaFramework.Config;
 using EaaFramework.Driver;
 using Microsoft.Playwright;
@@ -40,20 +41,17 @@ namespace EaaApplicationTest
         {
             var page = await _playwrightDriver.Page;
             await page.GotoAsync("http://localhost:33084/");
-            await page.GetByRole(AriaRole.Link, new() { Name = "Product" }).ClickAsync();
-            await page.GetByRole(AriaRole.Link, new() { Name = "Create" }).ClickAsync();
-            await page.GetByRole(AriaRole.Textbox, new() { Name = "Name" }).ClickAsync();
-            await page.GetByRole(AriaRole.Textbox, new() { Name = "Name" }).FillAsync("UPS");
-            await page.GetByRole(AriaRole.Textbox, new() { Name = "Description" }).ClickAsync();
-            await page.GetByRole(AriaRole.Textbox, new() { Name = "Description" }).FillAsync("Uninterrupted Power Supply backup");
-            await page.Locator("#Price").ClickAsync();
-            await page.Locator("#Price").FillAsync("1570");
-            await page.GetByLabel("ProductType").SelectOptionAsync(new[] { "2" });
-            await page.GetByRole(AriaRole.Button, new() { Name = "Create" }).ClickAsync();
-            await page.GetByRole(AriaRole.Row, new() { Name = "68 UPS Uninterrupted Power" }).GetByRole(AriaRole.Link).Nth(1).ClickAsync();
-            await page.GetByText("UPS").ClickAsync();
-            await page.GetByRole(AriaRole.Link, new() { Name = "Back to List" }).ClickAsync();
 
+            ProductListPage productListPage = new ProductListPage(page);
+            ProductPage productPage = new ProductPage(page);
+            
+            await productListPage.CreateProductAsync();
+            await productPage.CreateProduct("Speaker", "Gaming Speaker", 144, "2");
+            await productPage.ClickCreateProduct();
+            await productListPage.ClickProductFromList("Speaker");
+
+            // Assertion
+            Assert.True( await productListPage.IsProductCreatedAsync("Speaker"));
         }
     }
 }
