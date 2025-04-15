@@ -51,7 +51,10 @@ namespace EaaApplicationTest
             await productListPage.ClickProductFromList("Speaker");
 
             // Assertion
-            Assert.True( await productListPage.IsProductCreatedAsync("Speaker"));
+            // Assert.True( await productListPage.IsProductCreatedAsync("Speaker"));
+
+            var element = productListPage.IsProductCreated("Speaker");
+            await Assertions.Expect(element).ToBeVisibleAsync();
         }
     }
 }

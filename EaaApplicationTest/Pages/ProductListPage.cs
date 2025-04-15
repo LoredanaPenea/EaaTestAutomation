@@ -26,12 +26,13 @@ namespace EaaApplicationTest.Pages
 
         public async Task ClickProductFromList(string name)
         {
-            _page.GetByRole(AriaRole.Row, new() { Name = name }).GetByRole(AriaRole.Link, new() { Name = "Details" });
+            await _page.GetByRole(AriaRole.Row, new() { Name = name }).GetByRole(AriaRole.Link, new() { Name = "Details" }).ClickAsync();
             
         }
-        public async Task<bool> IsProductCreatedAsync(string product)
+        public ILocator  IsProductCreated(string product)
         {
-            return await _page.IsVisibleAsync(product);
+            return _page.GetByText(product, new() { Exact = true});
+
         }
     }
 }
