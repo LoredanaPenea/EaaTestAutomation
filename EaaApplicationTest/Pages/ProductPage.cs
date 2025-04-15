@@ -1,4 +1,5 @@
-﻿using Microsoft.Playwright;
+﻿using EaaApplicationTest.Models;
+using Microsoft.Playwright;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +22,12 @@ namespace EaaApplicationTest.Pages
         private ILocator _selectProduct => _page.GetByRole(AriaRole.Combobox, new PageGetByRoleOptions() { Name = "ProductType"});
         private ILocator _linkCreate => _page.GetByRole(AriaRole.Button, new PageGetByRoleOptions() { Name = "Create" });
         
-        public async Task CreateProduct(string name, string description, decimal price, string productType)
+        public async Task CreateProduct(Product product)
         {
-            await _textName.FillAsync(name);
-            await _textDescription.FillAsync(description);
-            await _textPrice.FillAsync(price.ToString());
-            await _selectProduct.SelectOptionAsync(productType);
+            await _textName.FillAsync(product.Name);
+            await _textDescription.FillAsync(product.Description);
+            await _textPrice.FillAsync(product.Price.ToString());
+            await _selectProduct.SelectOptionAsync(product.ProductType.ToString());
         }
 
         public async Task ClickCreateProduct() => await _linkCreate.ClickAsync();
